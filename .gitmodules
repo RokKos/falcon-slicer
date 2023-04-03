@@ -10,3 +10,6 @@
 [submodule "libs/imgui"]
 	path = libs/imgui
 	url = git@github.com:machlibs/imgui.git
+[submodule "libs/zmath"]
+	path = libs/zmath
+	url = git@github.com:machlibs/zmath.git
