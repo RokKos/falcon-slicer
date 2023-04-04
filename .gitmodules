@@ -13,3 +13,6 @@
 [submodule "libs/zmath"]
 	path = libs/zmath
 	url = git@github.com:machlibs/zmath.git
+[submodule "libs/zip"]
+	path = libs/zip
+	url = git@github.com:kuba--/zip.git
