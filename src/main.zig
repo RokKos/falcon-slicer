@@ -2,8 +2,9 @@ const std = @import("std");
 const mach = @import("core");
 const gpu = mach.gpu;
 const imgui = @import("imgui/imgui.zig");
-
 const content = @import("imgui/content.zig");
+
+const zip_lib = @cImport(@cInclude("zip.h"));
 
 pub const App = @This();
 
@@ -78,6 +79,10 @@ pub fn init(app: *App) !void {
 
     vs_module.release();
     fs_module.release();
+
+    const zip_file = zip_lib.zip_open("BigBlok.zip", 0, 'r');
+    const total_entries = zip_lib.zip_entries_total(zip_file);
+    std.debug.print("zip file: {?} total entires in zip: {?}\n", .{ zip_file, total_entries });
 }
 
 pub fn deinit(app: *App) void {

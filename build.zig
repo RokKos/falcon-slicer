@@ -62,6 +62,19 @@ pub fn build(b: *std.Build) !void {
     imgui_pkg.link(app.step);
 
     try app.link(options.core);
+
+    const flags = [_][]const u8{
+        "-Wall",
+        "-Wextra",
+        "-Werror=return-type",
+    };
+    const cflags = flags ++ [_][]const u8{
+        "-std=c99",
+    };
+    app.step.addCSourceFile("libs/zip/src/zip.c", &cflags);
+    app.step.addIncludePath("libs/zip/src");
+    app.step.linkLibC();
+
     app.install();
 
     const compile_step = b.step(app_name, "Compile " ++ app_name);
